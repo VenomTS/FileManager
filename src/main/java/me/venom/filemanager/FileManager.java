@@ -27,11 +27,11 @@ public final class FileManager
 
     public void getResourceFile()
     {
-        customConfigFile = new File(main.getDataFolder(), fileName);
+        customConfigFile = new File(main.getDataFolder(), fileName + ".yml");
         if(!customConfigFile.exists())
         {
-            boolean success = customConfigFile.getParentFile().mkdirs();
-            if(success) main.saveResource(fileName, false);
+            customConfigFile.getParentFile().mkdirs();
+            main.saveResource(fileName, false);
         }
         loadFile();
     }
@@ -44,7 +44,8 @@ public final class FileManager
         {
             try
             {
-                if(customConfigFile.getParentFile().mkdirs() && customConfigFile.createNewFile())
+                customConfigFile.getParentFile().mkdirs();
+                if(customConfigFile.createNewFile())
                 {
                     loadFile();
                 }
