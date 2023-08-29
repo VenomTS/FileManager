@@ -20,14 +20,14 @@ public final class FileManager
     public FileManager(Plugin plugin, String fileName)
     {
         main = plugin;
-        this.fileName = fileName;
+        this.fileName = fileName + ".yml";
     }
 
     public FileConfiguration getFile() { return customConfig; }
 
     public void getResourceFile()
     {
-        customConfigFile = new File(main.getDataFolder(), fileName + ".yml");
+        customConfigFile = new File(main.getDataFolder(), fileName);
         if(!customConfigFile.exists())
         {
             customConfigFile.getParentFile().mkdirs();
@@ -38,7 +38,7 @@ public final class FileManager
 
     public void createConfigFile()
     {
-        customConfigFile = new File(main.getDataFolder(), fileName + ".yml");
+        customConfigFile = new File(main.getDataFolder(), fileName);
         if(customConfigFile.exists()) { loadFile(); }
         else
         {
